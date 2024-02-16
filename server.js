@@ -5,9 +5,10 @@ import bcrypt from 'bcryptjs';
 import  jwt  from "jsonwebtoken";
 import { Todo } from "./Models/todo.model.js";
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const JWT_SECRET = process.env.JWT_SECRET;
 const app = express();
 const port = process.env.PORT
@@ -40,10 +41,10 @@ const requireLogin = (req,res,next) => { // middleware
     }
 }
 
-app.get("/",(req,res) => {
-    app.use(express.static(path.resolve(__dirname,'web-todo','build')))
-    res.sendFile(path.resolve(__dirname,'web-todo','build','index.html'))
-})
+app.get('/', (req, res) => {
+    app.use(express.static(path.resolve(__dirname, 'web-todo', 'build')));
+    res.sendFile(path.resolve(__dirname, 'web-todo', 'build', 'index.html'));
+  });
 
 app.post('/signup',async(req,res) => {
     const {email,password} = req.body
