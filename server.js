@@ -119,6 +119,7 @@ app.delete("/remove/:id",requireLogin,async(req,res)=>{
     }
 })
 
-app.listen(port,() => {
-    console.log("app is live on port: ",port);
-})
+// app.listen(port,() => {
+//     console.log("app is live on port: ",port);
+// })
+module.exports = app;
